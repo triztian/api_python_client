@@ -24,10 +24,10 @@ def makeCall(endpoint, query={}):
             operator = operator[ : (len(operation)*-1) ]
         url += "{key}{operation}{value}&".format(key=operator, value=value, operation=operation)
     url = url[:-1]
-    print("CALL: " + url)
+    #print("CALL: " + url)
     with urllib.request.urlopen(url) as response:
         result = json.loads(response.read().decode("utf-8"))
-        print(result)
+        #print(result)
         return result
 
 def api(endpoint='api-catalog', query={}):
