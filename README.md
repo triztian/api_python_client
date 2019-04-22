@@ -7,7 +7,8 @@ Puedes ejecutar el script con: `python3 client.py`
 
 Tambien puedes instalarlo directamente con pip: `pip install datosgobmx`
 
-Para utilizarlo, puedes importar la librería con: `import datosgobmx.client as api`
+Para utilizarlo, puedes primero importar la librería con: `import datosgobmx.client as api`
+y luego hacer llamadas tipo `api.api("endpoint", {"page": 2})`, el segundo parámetro opcional, tiene el formato de query descrito en https://github.com/mxabierto/api#filtros
 
 ## Despliegue en PyPI
 
