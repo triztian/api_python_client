@@ -31,4 +31,4 @@ def makeCall(endpoint, query={}):
         return result
 
 def api(endpoint='api-catalog', query={}):
-    makeCall(endpoint, query)['results']
+    return makeCall(endpoint, query)['results']
