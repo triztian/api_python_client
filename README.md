@@ -1,24 +1,73 @@
 # API.datos.gob.mx - cliente de python
 
+Script base para la consulta de datos al API de: 
+
+  * https://api.datos.gob.mx/v2
+
+## Installación
+
+```bash
+pip install --user datosgobmx
+```
+
 ## Uso
-Script base para la consulta de datos al API de https://api.datos.gob.mx/v2
 
-Puedes ejecutar el script con: `python3 client.py`
+### Como librería
 
-Tambien puedes instalarlo directamente con pip: `pip install datosgobmx`
+```python
+import datsogobmx.client as api
 
-Para utilizarlo, puedes primero importar la librería con: `import datosgobmx.client as api`
-y luego hacer llamadas tipo `api.api("endpoint", {"page": 2})`, el segundo parámetro opcional, tiene el formato de query descrito en https://github.com/mxabierto/api#filtros
-
-## Despliegue en PyPI
-
-Tomado de https://medium.com/@joel.barmettler/how-to-upload-your-python-package-to-pypi-65edc5fe9c56
-
+# Retorna una lista de _Endpoints_
+# https://api.datos.gob.mx/v2/api-catalog
+#
+# Cada _Endpoint_ tiene la siguiente estructura, los contenidos de cada endpoint
+# serán distintos:
+#
+# {
+#   "_id": "5cccf090e2705c193281f0aa",
+#   "variables": [
+#     "_id",
+#     "ocid",
+#     "releases",
+#     "compiledRelease"
+#   ],
+#   "count": 300265,
+#   "url": "https://api.datos.gob.mx/v2/Records",
+#   "endpoint": "Records"
+# }
+api_catalog = api()
 ```
-pip install twine
-python setup.py sdist
-twine upload dist/*
+
+Otro ejemplo, para obtener una lista the URLs y endpoints disponibles en la 
+segunda página del catalogo puedes realizar lo siguiente.
+
+```python
+import datsogobmx.client as api
+
+for endpoint in api(query={'page': 2}):
+	print(endpoint['url'], endpoint['endpoint'])
 ```
+
+> NOTA: El método `api` toma un segundo parametro `query` que es un diccionario
+> opcional.
+> Tiene el formato de query descrito en https://github.com/mxabierto/api#filtros
+
+El REST API v2 esta descrito en el siguiente enlace, esto incluye
+los objetos JSON retornados por los endpoints:
+
+  * [API v2](https://github.com/mxabierto/api)
+
+### Como script independiente
+
+Si no se tiene acceso a `pip`, uno puede copiar el script `datosgobmx/client.py`
+a su computadora y directorio de preferencia y ejecutarlo de la siguiente 
+manera:
+
+```bash
+python3 client.py
+```
+
+---
 
 ## Licencia
 Software libre, puede ser redistribuido bajo los términos especificados en nuestra [licencia](https://datos.gob.mx/libreusomx).
