@@ -15,7 +15,7 @@ pip install --user datosgobmx
 ### Como librería
 
 ```python
-import datsogobmx.client as api
+import datosgobmx.client as api
 
 # Retorna una lista de _Endpoints_
 # https://api.datos.gob.mx/v2/api-catalog
@@ -42,7 +42,7 @@ Otro ejemplo, para obtener una lista the URLs y endpoints disponibles en la
 segunda página del catalogo puedes realizar lo siguiente.
 
 ```python
-import datsogobmx.client as api
+import datosgobmx.client as api
 
 for endpoint in api(query={'page': 2}):
 	print(endpoint['url'], endpoint['endpoint'])
