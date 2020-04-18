@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'datosgobmx',
   packages = ['datosgobmx'], # this must be the same as the name above
-  version = '0.1.2',
+  version = '0.1.3',
   description = 'Connect to api.datos.gob.mx',
   author = 'Leo Castaneda',
   author_email = 'leonel.castaneda@datos.mx',
